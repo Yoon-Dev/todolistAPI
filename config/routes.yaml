@@ -1,3 +1,19 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+add.todo:
+    path: /add/todo/
+    methods: POST
+    controller: App\Controller\ApiController::addTodo
+
+edit.todo:
+    path: /edit/todo/{id}
+    methods: POST
+    controller: App\Controller\ApiController::editTodo
+
+remove.todo:
+    path: /remove/todo/{id}
+    methods: DELETE
+    controller: App\Controller\ApiController::removeTodo
+
+read.todo:
+    path: /read/todo/
+    methods: GET
+    controller: App\Controller\ApiController::readTodo

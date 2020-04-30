@@ -6,10 +6,10 @@ use App\Repository\LabelRepository;
 
 trait controllerHelper
 {
-    public function isLabeled(?int $id, LabelRepository $labeler): ?Label
+    public function isLabeled(?int $id, LabelRepository $labelrepo): ?Label
     {
         if(!empty($id)){
-            return $labeler->find($id);
+            return $labelrepo->find($id);
         }else{
             return null;
         }

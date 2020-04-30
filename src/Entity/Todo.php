@@ -57,7 +57,6 @@ class Todo
     public function hydrate(array $params, ?Label $label)
     {
         foreach ($params as $k => $v){
-            var_dump($k);
             $method='set'.ucfirst($k);
             if (method_exists($this, $method) && !empty($v)){
                 if($k === "label"){

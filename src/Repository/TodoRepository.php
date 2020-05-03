@@ -18,5 +18,4 @@ class TodoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Todo::class);
     }
-
 }

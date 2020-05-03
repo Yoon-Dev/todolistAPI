@@ -36,36 +36,25 @@ class Todo
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Label", inversedBy="todos")
-     */
-    private $label;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $etat;
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 //  CONSTRUCT
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-    public function __construct(array $params, ?Label $label)
+    public function __construct(array $params)
     {
-        $this->hydrate($params, $label);
+        $this->hydrate($params);
     }
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 //  HYDRATE
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-    public function hydrate(array $params, ?Label $label)
+    public function hydrate(array $params)
     {
-        foreach ($params as $k => $v){
-            $method='set'.ucfirst($k);
-            if (method_exists($this, $method) && !empty($v)){
-                if($k === "label"){
-                    $this->$method($label);
-                }else{
-                    $this->$method($v);
-                }
-            }else if(method_exists($this, $method) && $k === "label" && empty($v)){
-                $this->$method(null);
+        foreach ($params as $k => $v) {
+            $method = 'set' . ucfirst($k);
+            if (method_exists($this, $method) && !empty($v)) {
+                $this->$method($v);
             }
         }
     }
@@ -114,20 +103,6 @@ class Todo
     public function setDate(string $date): self
     {
         $this->date = date_create($date);
-
-        return $this;
-    }
-//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-    public function getLabel(): ?Label
-    {
-        return $this->label;
-    }
-//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-    public function setLabel(?Label $label): self
-    {
-        $this->label = $label;
 
         return $this;
     }

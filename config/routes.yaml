@@ -17,25 +17,3 @@ read.todo:
     path: /read/todo/
     methods: GET
     controller: App\Controller\ApiController::readTodo
-#°°°°°°°°°°°°°°°°°°°°°°°°
-#   LABEL
-#°°°°°°°°°°°°°°°°°°°°°°°
-add.label:
-    path: /add/label/
-    methods: POST
-    controller: App\Controller\ApiController::addLabel
-
-edit.label:
-    path: /edit/label/{id}
-    methods: POST
-    controller: App\Controller\ApiController::editLabel
-
-remove.label:
-    path: /remove/label/{id}
-    methods: DELETE
-    controller: App\Controller\ApiController::removeLabel
-
-read.label:
-    path: /read/label/
-    methods: GET
-    controller: App\Controller\ApiController::readLabel
